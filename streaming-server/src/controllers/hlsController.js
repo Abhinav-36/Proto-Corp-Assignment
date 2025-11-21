@@ -29,7 +29,7 @@ export function serveHlsFile(req, res) {
     // Read and modify playlist to use absolute URLs
     try {
       let playlist = readFileSync(filePath, 'utf8');
-      const baseUrl = `${req.protocol}://${req.get('host')}/api/hls/${streamId}`;
+      const baseUrl = `https://${req.get('host')}/api/hls/${streamId}`;
       
       // Replace segment filenames with absolute URLs
       // Split into lines to process each line individually
