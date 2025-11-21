@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { StreamSource } from "../types/stream";
 
 // Backend API endpoint (fallback to local file if backend not available)
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3001";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://proto-streaming-server.onrender.com";
 const API_ENDPOINT = `${API_BASE}/api/streams`;
 const FALLBACK_SOURCE = "/streams.json";
 
