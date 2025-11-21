@@ -28,6 +28,45 @@ sudo apt-get update
 sudo apt-get install ffmpeg
 ```
 
+## FOLDER STRUCTURE
+
+## Directory Structure
+
+```
+streaming-server/
+├── src/
+│   ├── config/              # Configuration files
+│   │   ├── index.js         # Main configuration (env vars, paths)
+│   │   └── streamConfig.js  # Stream definitions
+│   │
+│   ├── controllers/         # Route handlers (business logic)
+│   │   ├── healthController.js  # Health check endpoints
+│   │   ├── streamController.js  # Stream management endpoints
+│   │   └── hlsController.js     # HLS file serving
+│   │
+│   ├── middlewares/         # Express middlewares
+│   │   ├── cors.js          # CORS configuration
+│   │   └── errorHandler.js  # Error handling & 404
+│   │
+│   ├── routes/              # Route definitions
+│   │   ├── index.js         # Main router (mounts all routes)
+│   │   ├── healthRoutes.js  # Health check routes
+│   │   ├── streamRoutes.js  # Stream management routes
+│   │   └── hlsRoutes.js     # HLS serving routes
+│   │
+│   ├── utils/               # Utility functions
+│   │   └── ffmpegManager.js # FFmpeg process management
+│   │
+│   └── server.js            # Main server file (entry point)
+│
+├── outputs/                 # HLS output directory (generated)
+├── package.json
+├── .env.example
+└── README.md
+```
+
+
+
 ## Installation
 
 ```bash
