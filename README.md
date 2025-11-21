@@ -1,5 +1,7 @@
 # Video Streaming Dashboard
 
+## Vercel Link: https://proto-corp-assignment.vercel.app/
+
 End-to-end assignment that:
 
 - Converts the RTSP feed (`rtsp://13.60.76.79:8554/live`) into multiple HLS playlists.
