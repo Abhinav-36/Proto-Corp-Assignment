@@ -1,7 +1,7 @@
 # Video Streaming Dashboard
 
 ## Vercel Link: https://proto-corp-assignment.vercel.app/ 
-(Hosted Backend is shutting down due to limitations of free teir deployment)
+## (Hosted Backend is shutting down due to limitations of free teir deployment)
 
 End-to-end assignment that:
 
