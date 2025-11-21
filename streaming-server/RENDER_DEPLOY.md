@@ -54,7 +54,7 @@ Set these in Render Dashboard → Environment:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `RTSP_SOURCE` | RTSP stream source URL | `rtsp://13.60.76.79:8554/live` |
+| `RTSP_SOURCE` | RTSP stream source URL | `rtsp://13.60.76.79:8554/live1` |
 | `STREAM_COUNT` | Number of streams to create | `6` |
 | `SEGMENT_DURATION` | HLS segment duration (seconds) | `2` |
 | `PLAYLIST_SIZE` | Number of segments in playlist | `6` |
