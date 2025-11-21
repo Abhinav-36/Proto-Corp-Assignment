@@ -25,9 +25,10 @@ app.use(routes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-// Start server
-app.listen(config.server.port, () => {
-  console.log(`🚀 Streaming server running on http://localhost:${config.server.port}`);
+// Start server - Use PORT from environment (Render sets this automatically)
+const port = process.env.PORT || config.server.port;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`🚀 Streaming server running on port ${port}`);
   console.log(`📡 RTSP Source: ${config.streaming.rtspSource}`);
   console.log(`📁 HLS Output: ${config.streaming.hlsOutputDir}`);
   console.log(`🎬 Streams: ${config.streaming.streamCount}`);

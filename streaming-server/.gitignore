@@ -3,6 +3,6 @@ outputs/
 .env
 *.log
 .DS_Store
-
-
-
+netlify/bin/
+netlify/functions/
+public/

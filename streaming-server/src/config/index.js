@@ -18,7 +18,7 @@ export const config = {
     streamCount: parseInt(process.env.STREAM_COUNT || '6', 10),
     segmentDuration: process.env.SEGMENT_DURATION || '2',
     playlistSize: process.env.PLAYLIST_SIZE || '6',
-    ffmpegPath: process.env.FFMPEG_PATH || 'ffmpeg' // Use FFMPEG_PATH env var or default to 'ffmpeg'
+    // Use FFMPEG_PATH env var, or check for installed FFmpeg, or default to 'ffmpeg'
+    ffmpegPath: process.env.FFMPEG_PATH || 'ffmpeg'
   }
 };
-

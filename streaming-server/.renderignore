@@ -1,0 +1,14 @@
+# Files to ignore during Render build
+node_modules/
+outputs/
+*.log
+.DS_Store
+.env
+.env.local
+*.md
+!README.md
+.git/
+.gitignore
+netlify/
+public/
+

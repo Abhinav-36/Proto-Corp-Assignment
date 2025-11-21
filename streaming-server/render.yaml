@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: proto-streaming-server
+    env: node
+    region: oregon  # Change to your preferred region
+    plan: free  # Change to 'starter' or 'standard' for production
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          type: web
+          name: proto-streaming-server
+          property: port
+      - key: RTSP_SOURCE
+        sync: false  # REQUIRED: Set this in Render dashboard
+      - key: STREAM_COUNT
+        value: 6
+      - key: SEGMENT_DURATION
+        value: 2
+      - key: PLAYLIST_SIZE
+        value: 6
+      - key: CORS_ORIGIN
+        sync: false  # REQUIRED: Set this to your dashboard URL
+      - key: HLS_OUTPUT_DIR
+        value: ./outputs
+      - key: FFMPEG_PATH
+        value: ffmpeg
