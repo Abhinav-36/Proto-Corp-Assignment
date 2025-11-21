@@ -70,7 +70,6 @@ The dashboard will:
 ### Port already in use
 - Change `PORT` in `streaming-server/.env`
 - Update `VITE_API_BASE` in `dashboard/.env.local` to match
-
 ## Next Steps
 
 - See `streaming-server/README.md` for backend API documentation
