@@ -1,0 +1,36 @@
+[
+  {
+    "id": "cam-master",
+    "name": "Master Feed",
+    "playlist": "http://localhost:3001/api/hls/cam-master/index.m3u8"
+  },
+  {
+    "id": "cam-alpha",
+    "name": "Alpha",
+    "playlist": "http://localhost:3001/api/hls/cam-alpha/index.m3u8"
+  },
+  {
+    "id": "cam-bravo",
+    "name": "Bravo",
+    "playlist": "http://localhost:3001/api/hls/cam-bravo/index.m3u8"
+  },
+  {
+    "id": "cam-charlie",
+    "name": "Charlie",
+    "playlist": "http://localhost:3001/api/hls/cam-charlie/index.m3u8"
+  },
+  {
+    "id": "cam-delta",
+    "name": "Delta",
+    "playlist": "http://localhost:3001/api/hls/cam-delta/index.m3u8"
+  },
+  {
+    "id": "cam-echo",
+    "name": "Echo",
+    "playlist": "http://localhost:3001/api/hls/cam-echo/index.m3u8"
+  }
+]
+
+
+
+
