@@ -31,7 +31,7 @@ export function startFFmpegStream(streamId) {
   // Create stream directory
   if (!existsSync(streamDir)) {
     mkdirSync(streamDir, { recursive: true });
-    console.log(`[${streamId}] Created output directory: ${streamDir}`);
+    //console.log(`[${streamId}] Created output directory: ${streamDir}`);
   }
 
   // Use absolute paths to ensure files are written to the correct location
@@ -42,11 +42,11 @@ export function startFFmpegStream(streamId) {
   const nextBoundary = getNextSegmentBoundary();
   const delay = Math.max(0, nextBoundary - Date.now());
   
-  console.log(`[${streamId}] Scheduling start at segment boundary (${delay}ms delay)`);
+  //console.log(`[${streamId}] Scheduling start at segment boundary (${delay}ms delay)`);
 
   // Store the start function to execute at the boundary
   const startAtBoundary = () => {
-    console.log(`[${streamId}] Starting FFmpeg at synchronized boundary...`);
+    //console.log(`[${streamId}] Starting FFmpeg at synchronized boundary...`);
 
     // FFmpeg command to convert RTSP to HLS with synchronized timestamps
     const ffmpegArgs = [
@@ -67,11 +67,11 @@ export function startFFmpegStream(streamId) {
       playlistPath                        // Output playlist (absolute path)
     ];
 
-    console.log(`[${streamId}] Starting FFmpeg process...`);
-    console.log(`[${streamId}] Output directory: ${streamDir}`);
-    console.log(`[${streamId}] Playlist path: ${playlistPath}`);
-    console.log(`[${streamId}] Segment pattern: ${segmentPattern}`);
-    console.log(`[${streamId}] Command: ${config.streaming.ffmpegPath} ${ffmpegArgs.join(' ')}`);
+    //console.log(`[${streamId}] Starting FFmpeg process...`);
+    //console.log(`[${streamId}] Output directory: ${streamDir}`);
+    //console.log(`[${streamId}] Playlist path: ${playlistPath}`);
+   // console.log(`[${streamId}] Segment pattern: ${segmentPattern}`);
+    //console.log(`[${streamId}] Command: ${config.streaming.ffmpegPath} ${ffmpegArgs.join(' ')}`);
 
     const ffmpeg = spawn(config.streaming.ffmpegPath, ffmpegArgs, {
       stdio: ['ignore', 'pipe', 'pipe']
@@ -79,7 +79,7 @@ export function startFFmpegStream(streamId) {
 
     // Log FFmpeg output
     ffmpeg.stdout.on('data', (data) => {
-      console.log(`[${streamId}] FFmpeg stdout: ${data.toString().trim()}`);
+     // console.log(`[${streamId}] FFmpeg stdout: ${data.toString().trim()}`);
     });
 
     ffmpeg.stderr.on('data', (data) => {
@@ -88,24 +88,24 @@ export function startFFmpegStream(streamId) {
       if (message.includes('error') || message.includes('Error') || message.includes('Failed')) {
         console.error(`[${streamId}] FFmpeg error: ${message}`);
       } else {
-        console.log(`[${streamId}] FFmpeg: ${message}`);
+        //console.log(`[${streamId}] FFmpeg: ${message}`);
       }
     });
 
     ffmpeg.on('close', (code) => {
-      console.log(`[${streamId}] FFmpeg process exited with code ${code}`);
+      //console.log(`[${streamId}] FFmpeg process exited with code ${code}`);
       ffmpegProcesses.delete(streamId);
       pendingStarts.delete(streamId);
       
       // Restart if not manually stopped
       if (code !== 0 && code !== null) {
-        console.log(`[${streamId}] Restarting FFmpeg process in 5 seconds...`);
+        //console.log(`[${streamId}] Restarting FFmpeg process in 5 seconds...`);
         setTimeout(() => startFFmpegStream(streamId), 5000);
       }
     });
 
     ffmpeg.on('error', (err) => {
-      console.error(`[${streamId}] Failed to start FFmpeg:`, err.message);
+      //console.error(`[${streamId}] Failed to start FFmpeg:`, err.message);
       pendingStarts.delete(streamId);
       if (err.code === 'ENOENT') {
         console.error(`[${streamId}] FFmpeg not found. Please install FFmpeg.`);
@@ -140,7 +140,7 @@ export function stopFFmpegStream(streamId) {
 
   const ffmpeg = ffmpegProcesses.get(streamId);
   if (ffmpeg) {
-    console.log(`[${streamId}] Stopping FFmpeg process...`);
+    //console.log(`[${streamId}] Stopping FFmpeg process...`);
     ffmpeg.kill('SIGTERM');
     ffmpegProcesses.delete(streamId);
   }
